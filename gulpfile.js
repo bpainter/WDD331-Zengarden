@@ -27,7 +27,7 @@ gulp.task('styles', function(){
     }}))
     .pipe(sass())
     .pipe(autoprefixer('last 2 versions'))
-    .pipe(gulp.dest('/'))
+    .pipe(gulp.dest(''))
     .pipe(browserSync.reload({stream:true}))
 });
 
