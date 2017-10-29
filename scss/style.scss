@@ -1,3 +1,271 @@
-body {
-    background-color: red;
+// ----------------------------------------------------
+// Variables
+// ----------------------------------------------------
+
+// Colors
+// Primary Colors
+$xx-dark-blue: #00355e; // Secondary blue, also used for visualizations
+$x-dark-blue: #00467f;
+$dark-blue: #0a61ad;
+$blue: #007cd3; // Primary blue, also used for visualizations
+$light-blue: #139ceb;
+$x-light-blue: #21b7ff;
+
+// Secondary Colors
+$x-dark-red: #8F2E0D;
+$dark-red: #B54B26;
+$red: #FF4500;
+$light-red: #F59573;
+$x-light-red: #FFBAA3;
+
+// Alerts
+$green: #5aa832; // Also used for visualizations, positive result
+$red: #d31c3c; // Also used for visualizations, negative result
+$orange: #ec9a2f;
+
+// Grays
+$xx-dark-gray: #222129;
+$x-dark-gray: #3a3c44;
+$dark-gray: #656963;
+$gray: #7c7c89;
+$light-gray: #9a9fac;
+$x-light-gray: #c6c9da;
+$xx-light-gray: #e3e7ea;
+
+// Misc
+$white: #ffffff;
+
+// Sass map with branded colors. These are the values that should
+// be used in any Sass files.
+// Call these in your Sass with (defaults to the color in 'base'): 
+// 
+//  Usage:
+//     background-color: brand-color(primary, dark) ;
+
+$colors: (
+  primary: (
+    base: $blue,
+    light: $light-blue,
+    x-light: $x-light-blue,
+    dark: $dark-blue,
+    x-dark: $x-dark-blue,
+    xx-dark: $xx-dark-blue
+  ),
+  secondary: (
+    base: $red,
+    light: $light-red,
+    x-light: $x-light-red,
+    dark: $dark-red,
+    x-dark: $x-dark-red,
+  ),
+  gray: (
+    base: $gray,
+    light: $light-gray,
+    x-light: $x-light-gray,
+    xx-light: $x-light-gray, 
+    dark: $dark-gray,
+    x-dark: $x-dark-gray,
+    xx-dark: $xx-dark-gray
+  ),
+  muted: (
+    base: $white
+  ),
+  alert: (
+    info: $gray,
+    success: $green,
+    warning: $orange,
+    danger: $red
+  )
+);
+
+// ---------------------------------------------------------------
+// Spacing
+// ---------------------------------------------------------------
+// Generates a Sass map to handle the spacing specific to margin 
+// and padding. Calculations are using a modular scale, not linear.
+// $spacing: (
+//   xxs: -,
+//   xs: -,
+//   s: -,
+//   m: -,
+//   l: -,
+//   xl: -,
+//   xxl: -,
+// );
+// 
+// Usage:
+//   margin-bottom: spacing(s);
+//   padding: spacing(xl);
+// ---------------------------------------------------------------
+// $modular-spacing-base-size: 2px;
+// @each $size in $modular-scale-sizes {
+//   $i: index($modular-scale-sizes, $size);
+//   $spacing: (
+//     $size: calculateModularScale($i, $modular-spacing-base-size),
+//   );
+// }
+$spacing-scale: (
+  xxs: 2px,
+  xs: 4px,
+  s: 8px,
+  m: 16px,
+  l: 32px,
+  xl: 64px,
+  xxl: 128px,
+);
+
+// Fonts
+$heading-font-family: 'Droid Serif', serif;
+$body-font-family: 'Droid Sans', sans-serif;
+$base-font-size: 14px;
+
+$font-scale: (
+  xxs: (.422em, 1.1),
+  xs: (.563em, 1.15),
+  s: (.75em, 1.2),
+  m:( 1em, 1.3),
+  l: (1.333em, 1.4),
+  xl: (1.777em, 1.45),
+  xxl: (2.369em, 1.5)
+);
+
+// Responsive breakpoints
+$breakpoints: (
+  xxs: 320px,
+  xs: 480px,
+  s: 640px,
+  m: 768px,
+  l: 1024px,
+  xl: 1480px,
+  xxl: 1600px,
+);
+
+// ----------------------------------------------------
+// Helpers
+// ----------------------------------------------------
+// Function to return the brand colors from the Sass map
+// in the _theme.scss files
+@function brand-color($color, $tone: 'base') {
+    @return map-get(map-get($colors, $color), $tone);
 }
+
+// Function to handle consuming the breakpoints map
+@function breakpoint($breakpoint) {
+  @return map-get($breakpoints, $breakpoint);
+}
+
+// General Breakpoint Mixin
+// Sets basic breakpoint values as a mixin based on the
+// Sass map of breakpoint values in the theme.scss
+// @media rule defaults to 'min-width'
+//
+// Usage:
+//    @include breakpoint(l, min-width) {
+//        ...
+//    }
+@mixin breakpoint($breakpoint, $rule: min-width) {
+  @media only screen and (#{$rule}: breakpoint($breakpoint)) {
+    @content;
+  }
+}
+
+// Manage a consistent font scale
+@function font-scale($scale) {
+  @return map-get($font-scale, $scale);
+}
+
+@mixin font-scale($scale) {
+  @if type-of(font-scale($scale)) == "list" {
+    font-size: nth(font-scale($scale), 1);
+    @if (length(font-scale($scale)) > 1) {
+      line-height: nth(font-scale($scale), 2);
+    }
+  }
+  @else {
+    font-size: font-scale($scale);
+  }
+}
+
+// Manage a consistent spacing scale
+@function spacing($scale) {
+  @return map-get($spacing-scale, $scale);
+}
+
+@mixin equal-spacing($padding) {
+  padding: spacing($padding);
+}
+
+@mixin offset-spacing($top-bottom-padding, $left-right-padding) {
+  padding: spacing($top-bottom-padding) spacing($left-right-padding);
+}
+
+@mixin stack($bottom-margin) {
+  margin-bottom: spacing($bottom-margin);
+}
+
+@mixin inline($right-margin) {
+  margin-right: spacing($right-margin);
+}
+
+// ----------------------------------------------------
+// Root
+// ----------------------------------------------------
+// HTML/Body
+html {
+    background-color: brand-color(gray, xx-light);
+    box-sizing: border-box;
+    color: brand-color(gray, xx-dark);
+    line-height: 1.15;
+    font-family: $body-font-family;
+    font-size: $base-font-size;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    height: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+// HTML5 Elements - correct display in older browsers
+article,
+aside,
+footer,
+header,
+nav,
+section,
+figcaption,
+figure,
+main {
+  display: block;
+}
+
+
+// images - remove border when inside a link
+img {
+    border-style: none;
+}
+
+// SVG - correct overflow issue in IE
+svg:not(:root) {
+    overflow: hidden;
+}
+
+// ----------------------------------------------------
+// Typography
+// ----------------------------------------------------
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,400i,700,700i');
+
+body {
+  font-family: $body-font-family;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font-family;
+}
+
