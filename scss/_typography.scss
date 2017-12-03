@@ -1,0 +1,31 @@
+// Fonts
+$heading-font-family: 'Droid Serif', serif;
+$body-font-family: 'Open Sans', sans-serif;
+$base-font-size: 18px;
+
+$font-scale: (
+  xxs: (.422em, 1.1),
+  xs: (.563em, 1.15),
+  s: (.75em, 1.2),
+  m:( 1em, 1.3),
+  l: (1.533em, 1.3),
+  xl: (2.177em, 1.3),
+  xxl: (4.569em, 1)
+);
+
+// Manage a consistent font scale
+@function font-scale($scale) {
+    @return map-get($font-scale, $scale);
+}
+
+@mixin font-scale($scale) {
+    @if type-of(font-scale($scale)) == "list" {
+        font-size: nth(font-scale($scale), 1);
+        @if (length(font-scale($scale)) > 1) {
+            line-height: nth(font-scale($scale), 2);
+        }   
+    }
+    @else {
+        font-size: font-scale($scale);
+    }
+}

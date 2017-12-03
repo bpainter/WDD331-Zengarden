@@ -1,0 +1,75 @@
+// ---------------------------------------------------------------
+// Spacing
+// ---------------------------------------------------------------
+// Generates a Sass map to handle the spacing specific to margin 
+// and padding. Calculations are using a modular scale, not linear.
+// $spacing: (
+//   xxs: -,
+//   xs: -,
+//   s: -,
+//   m: -,
+//   l: -,
+//   xl: -,
+//   xxl: -,
+// );
+// 
+// Usage:
+//   margin-bottom: spacing(s);
+//   padding: spacing(xl);
+// ---------------------------------------------------------------
+// $modular-spacing-base-size: 2px;
+// @each $size in $modular-scale-sizes {
+//   $i: index($modular-scale-sizes, $size);
+//   $spacing: (
+//     $size: calculateModularScale($i, $modular-spacing-base-size),
+//   );
+// }
+$spacing-scale: (
+    xxs: 2px,
+    xs: 4px,
+    s: 8px,
+    m: 16px,
+    l: 32px,
+    xl: 64px,
+    xxl: 128px,
+);
+
+// Manage a consistent spacing scale
+@function spacing($scale) {
+    $is-negative: str-slice($scale, 1, 1);
+    
+    @if $is-negative == '-' {
+      // Get the length of the scale
+      // that includes the '-' value
+      $scale-length: str-length($scale);
+  
+      // Slice the scale to remove the '-' value
+      $scale-slice: str-slice($scale, 2, $scale-length);
+      
+      // Get the value from the map
+      $scale-value: map-get($spacing-scale, $scale-slice);
+      
+      // Return the negative value from the map
+      @return (-$scale-value);
+    } @else {
+      // Return the positive value from the map
+      @return map-get($spacing-scale, $scale);
+    }
+  }
+  
+  @mixin equal-spacing($padding) {
+    padding: spacing($padding);
+  }
+  
+  @mixin offset-spacing($top-bottom-padding, $left-right-padding) {
+    padding: spacing($top-bottom-padding) spacing($left-right-padding);
+  }
+  
+  @mixin stack($bottom-margin) {
+    margin-bottom: spacing($bottom-margin);
+  }
+  
+  @mixin inline($right-margin) {
+    margin-right: spacing($right-margin);
+  }
+  

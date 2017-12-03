@@ -1,0 +1,31 @@
+// Responsive breakpoints
+$breakpoints: (
+    xxs: 320px,
+    xs: 480px,
+    s: 640px,
+    m: 768px,
+    l: 1024px,
+    xl: 1480px,
+    xxl: 1600px,
+);
+
+// Function to handle consuming the breakpoints map
+@function breakpoint($breakpoint) {
+    @return map-get($breakpoints, $breakpoint);
+}
+  
+// General Breakpoint Mixin
+// Sets basic breakpoint values as a mixin based on the
+// Sass map of breakpoint values in the theme.scss
+// @media rule defaults to 'min-width'
+//
+// Usage:
+//    @include breakpoint(l, min-width) {
+//        ...
+//    }
+@mixin breakpoint($breakpoint, $rule: max-width) {
+    @media only screen and (#{$rule}: breakpoint($breakpoint)) {
+      @content;
+    }
+}
+  

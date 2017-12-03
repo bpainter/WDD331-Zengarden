@@ -1,0 +1,84 @@
+// ----------------------------------------------------
+// Variables
+// ----------------------------------------------------
+
+// Colors
+// Primary Colors
+$xx-dark-blue: #00355e; // Secondary blue, also used for visualizations
+$x-dark-blue: #00467f;
+$dark-blue: #0a61ad;
+$blue: #007cd3; // Primary blue, also used for visualizations
+$light-blue: #139ceb;
+$x-light-blue: #21b7ff;
+
+// Secondary Colors
+$x-dark-red: #8F2E0D;
+$dark-red: #B54B26;
+$red: #FF4500;
+$light-red: #F59573;
+$x-light-red: #FFBAA3;
+
+// Alerts
+$green: #5aa832; // Also used for visualizations, positive result
+$red: #d31c3c; // Also used for visualizations, negative result
+$orange: #ec9a2f;
+
+// Grays
+$xx-dark-gray: #222129;
+$x-dark-gray: #3a3c44;
+$dark-gray: #656963;
+$gray: #7c7c89;
+$light-gray: #9a9fac;
+$x-light-gray: #c6c9da;
+$xx-light-gray: #e3e7ea;
+
+// Misc
+$white: #ffffff;
+
+// Sass map with branded colors. These are the values that should
+// be used in any Sass files.
+// Call these in your Sass with (defaults to the color in 'base'): 
+// 
+//  Usage:
+//     background-color: brand-color(primary, dark) ;
+
+$colors: (
+  primary: (
+    base: $blue,
+    light: $light-blue,
+    x-light: $x-light-blue,
+    dark: $dark-blue,
+    x-dark: $x-dark-blue,
+    xx-dark: $xx-dark-blue
+  ),
+  secondary: (
+    base: $red,
+    light: $light-red,
+    x-light: $x-light-red,
+    dark: $dark-red,
+    x-dark: $x-dark-red,
+  ),
+  gray: (
+    base: $gray,
+    light: $light-gray,
+    x-light: $x-light-gray,
+    xx-light: $xx-light-gray, 
+    dark: $dark-gray,
+    x-dark: $x-dark-gray,
+    xx-dark: $xx-dark-gray
+  ),
+  muted: (
+    base: $white
+  ),
+  alert: (
+    info: $gray,
+    success: $green,
+    warning: $orange,
+    danger: $red
+  )
+);
+
+// Function to return the brand colors from the Sass map
+@function brand-color($color, $tone: 'base') {
+    @return map-get(map-get($colors, $color), $tone);
+}
