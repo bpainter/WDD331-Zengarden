@@ -62,24 +62,16 @@ h3 {
 
 a:link {
   color: #B54B26; }
-
 a:hover, a:focus {
   color: #d31c3c; }
 
 .page-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+  flex-wrap: wrap; }
 
 .intro {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1; }
+  flex: 0 0 100%;
+  order: 1; }
   .intro header[role="banner"] {
     padding: 128px;
     background: linear-gradient(135deg, #00467f 0%, #007cd3 100%); }
@@ -118,8 +110,7 @@ a:hover, a:focus {
       position: absolute;
       bottom: -6px;
       left: 50%;
-      -webkit-transform: skew(-40deg);
-              transform: skew(-40deg);
+      transform: skew(-40deg);
       width: 300px; }
     .intro .summary p:last-of-type {
       font-size: 60%; }
@@ -146,12 +137,8 @@ a:hover, a:focus {
 
 .main {
   padding: 64px 128px 64px 64px;
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 60%;
-          flex: 0 0 60%; }
+  order: 3;
+  flex: 0 0 60%; }
   @media only screen and (max-width: 1024px) {
     .main {
       padding: 64px; } }
@@ -160,11 +147,8 @@ a:hover, a:focus {
       padding: 32px 32px; } }
   @media only screen and (max-width: 640px) {
     .main {
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%;
-      -webkit-box-ordinal-group: 3;
-          -ms-flex-order: 2;
-              order: 2; } }
+      flex-basis: 100%;
+      order: 2; } }
   .main .explanation,
   .main .participation,
   .main .benefits {
@@ -208,11 +192,8 @@ a:hover, a:focus {
   .main footer {
     padding: 32px;
     background: linear-gradient(135deg, #007cd3 0%, #139ceb 100%);
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    justify-content: space-around;
     margin-left: -64px;
     margin-right: -128px;
     margin-bottom: -64px; }
@@ -232,75 +213,56 @@ a:hover, a:focus {
         text-decoration: underline; }
 
 .zen-validate-html {
-    background-color: #c6c9da;
-    mask: url('img/html.svg') no-repeat 50% 50%;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.zen-validate-html:hover {
-    background-color: #fff;
-}
+  background-color: #c6c9da;
+  mask: url("img/html.svg") no-repeat 50% 50%;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden; }
+  .zen-validate-html :hover {
+    background-color: #fff; }
 
 .zen-validate-css {
-    background-color: #c6c9da;
-    mask: url('img/css.svg') no-repeat 50% 50%;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 2.9em;
-}
-
-.zen-validate-css:hover {
-    background-color: #fff;
-}
+  background-color: #c6c9da;
+  mask: url("img/css.svg") no-repeat 50% 50%;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 2.9em; }
+  .zen-validate-css :hover {
+    background-color: #fff; }
 
 .zen-license {
-    background-color: #c6c9da;
-    mask: url('img/cc.svg') no-repeat 50% 50%;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.zen-license:hover {
-    background-color: #fff;
-}
+  background-color: #c6c9da;
+  mask: url("img/cc.svg") no-repeat 50% 50%;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden; }
+  .zen-license :hover {
+    background-color: #fff; }
 
 .zen-accessibility {
-    background-color: #c6c9da;
-    mask: url('img/a11y.svg') no-repeat 50% 50%;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.zen-accessibility:hover {
-    background-color: #fff;
-}
+  background-color: #c6c9da;
+  mask: url("img/a11y.svg") no-repeat 50% 50%;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden; }
+  .zen-accessibility :hover {
+    background-color: #fff; }
 
 .zen-github {
-    background-color: #c6c9da;
-    mask: url('img/gh.svg') no-repeat 50% 50%;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.zen-github:hover {
-    background-color: #fff;
-}
+  background-color: #c6c9da;
+  mask: url("img/gh.svg") no-repeat 50% 50%;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden; }
+  .zen-github :hover {
+    background-color: #fff; }
 
 .sidebar {
   padding: 64px 64px 64px 128px;
   background-color: #c6c9da;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 40%;
-          flex: 0 0 40%;
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2; }
+  flex: 0 0 40%;
+  order: 2; }
   @media only screen and (max-width: 1024px) {
     .sidebar {
       padding: 64px; } }
@@ -309,16 +271,11 @@ a:hover, a:focus {
       padding: 32px; } }
   @media only screen and (max-width: 640px) {
     .sidebar {
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%;
-      -webkit-box-ordinal-group: 4;
-          -ms-flex-order: 3;
-              order: 3;
+      flex-basis: 100%;
+      order: 3;
       font-size: 13px; } }
   @media only screen and (max-width: 640px) {
     .sidebar .wrapper {
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex; } }
   @media only screen and (max-width: 480px) {
     .sidebar .wrapper {
@@ -333,9 +290,7 @@ a:hover, a:focus {
         margin-bottom: 32px; } }
     @media only screen and (max-width: 640px) {
       .sidebar .design-selection {
-        -webkit-box-flex: 0;
-            -ms-flex: 0 0 40%;
-                flex: 0 0 40%;
+        flex: 0 0 40%;
         margin-bottom: 0; } }
   .sidebar .design-archives {
     margin-bottom: 64px; }
@@ -345,3 +300,5 @@ a:hover, a:focus {
     @media only screen and (max-width: 640px) {
       .sidebar .design-archives {
         margin-bottom: 0; } }
+
+/*# sourceMappingURL=style.css.map */
