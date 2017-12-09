@@ -231,6 +231,67 @@ a:hover, a:focus {
         color: #fff;
         text-decoration: underline; }
 
+.zen-validate-html {
+    background-color: #c6c9da;
+    mask: url('img/html.svg') no-repeat 50% 50%;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.zen-validate-html:hover {
+    background-color: #fff;
+}
+
+.zen-validate-css {
+    background-color: #c6c9da;
+    mask: url('img/css.svg') no-repeat 50% 50%;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 2.9em;
+}
+
+.zen-validate-css:hover {
+    background-color: #fff;
+}
+
+.zen-license {
+    background-color: #c6c9da;
+    mask: url('img/cc.svg') no-repeat 50% 50%;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.zen-license:hover {
+    background-color: #fff;
+}
+
+.zen-accessibility {
+    background-color: #c6c9da;
+    mask: url('img/a11y.svg') no-repeat 50% 50%;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.zen-accessibility:hover {
+    background-color: #fff;
+}
+
+.zen-github {
+    background-color: #c6c9da;
+    mask: url('img/gh.svg') no-repeat 50% 50%;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.zen-github:hover {
+    background-color: #fff;
+}
+
 .sidebar {
   padding: 64px 64px 64px 128px;
   background-color: #c6c9da;
