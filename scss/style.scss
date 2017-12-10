@@ -308,77 +308,69 @@ a {
     }
 
     a {
-      color: brand-color(gray, x-light);
+      color: #fff;
       text-decoration: none;
-      &:hover,
-      &:focus {
-        color: #fff;
-        text-decoration: underline;
+      transition: transform 150ms linear;
+      &:hover {
+        transform: scale(1.2);
       }
     }
   }
 }
 
 // SVG image for HTML characters and links
+.zen-validate-html,
+.zen-validate-css,
+.zen-github {
+  overflow: hidden;
+  text-indent: -50px;
+  line-height: 0;
+  &:after {
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: "";
+    display: block;
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.zen-license,
+.zen-accessibility {
+  border: 2px solid #fff;
+  border-radius: 40px;
+  height: 50px;
+  font-size: 14px;
+  line-height: 45px;
+  text-align: center;
+  width: 50px;
+}
 .zen-validate-html {
-    background-color: #c6c9da;
-    mask: url('img/html.svg') no-repeat 50% 50%;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    
-    :hover {
-        background-color: #fff;
-    }
+  position: relative;
+
+  &:after {
+    @include background-svg($icon-html);
+  }
 }
 
 .zen-validate-css {
-    background-color: #c6c9da;
-    mask: url('img/css.svg') no-repeat 50% 50%;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 2.9em;
-    
-    :hover {
-        background-color: #fff;
-    }
+  &:after {
+    @include background-svg($icon-css);
+  }
 }
 
 .zen-license {
-    background-color: #c6c9da;
-    mask: url('img/cc.svg') no-repeat 50% 50%;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
     
-    :hover {
-        background-color: #fff;
-    }
 }
 
 .zen-accessibility {
-    background-color: #c6c9da;
-    mask: url('img/a11y.svg') no-repeat 50% 50%;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-
-    :hover {
-        background-color: #fff;
-    }
+   
 }
 
 .zen-github {
-    background-color: #c6c9da;
-    mask: url('img/gh.svg') no-repeat 50% 50%;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    
-    :hover {
-        background-color: #fff;
-    }
+  &:after {
+    @include background-svg($icon-github);
+  }
 }
 // End SVG styles
 

@@ -1,8 +1,8 @@
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     rename = require('gulp-rename');
-var inlineSvg = require("gulp-inline-svg"),
-    svgMin = require('gulp-svgmin');
+// var inlineSvg = require("gulp-inline-svg"),
+//     svgMin = require('gulp-svgmin');
 var autoprefixer = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
@@ -19,12 +19,12 @@ gulp.task('bs-reload', function () {
   browserSync.reload();
 });
 
-gulp.task('inline-svg', function() {
-  return gulp.src("svg/**/*.svg")
-      .pipe(svgMin())
-      .pipe(inlineSvg())
-      .pipe(gulp.dest("scss"));
-});
+// gulp.task('inline-svg', function() {
+//   return gulp.src("svg/**/*.svg")
+//       .pipe(svgMin())
+//       .pipe(inlineSvg())
+//       .pipe(gulp.dest("scss"));
+// });
 
 gulp.task('styles', function(){
   gulp.src(['scss/**/*.scss'])
